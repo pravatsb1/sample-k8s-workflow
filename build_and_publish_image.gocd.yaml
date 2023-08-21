@@ -1,7 +1,7 @@
 format_version: 3
 pipelines:
-  build_and_publish_image_demoapp:
-    group: demo
+  build_and_publish_image_demoapp-a:
+    group: demo-app-a
     label_template: ${COUNT}
     lock_behavior: unlockWhenFinished
     display_order: 1
