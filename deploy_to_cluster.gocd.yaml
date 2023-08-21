@@ -1,14 +1,14 @@
 format_version: 3
 pipelines:
-  deploy_to_cluster_demoapp:
-    group: demo
+  deploy_to_cluster_demoapp-a:
+    group: demo-app-a
     label_template: ${COUNT}
     lock_behavior: none
     display_order: 3
     environment_variables:
     materials:
       upstream:
-        pipeline: test_application_demoapp
+        pipeline: test_application_demoapp-a
         stage: test_app_image
         name: upstream_pipeline
       SourceCodeRepo:
@@ -34,7 +34,7 @@ pipelines:
                   EnvironmentVariablePrefix: ''
                   SkipImagePulling: 'true'
                 artifact_id: bulletin-board
-                pipeline: build_and_publish_image_demoapp/test_application_demoapp
+                pipeline: build_and_publish_image_demoapp-a/test_application_demoapp-a
                 stage: build_and_publish_image
                 job: build_image
                 artifact_origin: external
