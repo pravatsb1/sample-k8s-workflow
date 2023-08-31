@@ -1,18 +1,18 @@
 format_version: 3
 pipelines:
-  deploy_to_cluster_demoapp:
-    group: demo
+  deploy_to_cluster:
+    group: sample
     label_template: ${COUNT}
     lock_behavior: none
     display_order: 3
     environment_variables:
     materials:
       upstream:
-        pipeline: test_application_demoapp
+        pipeline: test_application
         stage: test_app_image
         name: upstream_pipeline
       SourceCodeRepo:
-        git: https://github.com/pravatsb1/node-bulletin-board.git
+        git: https://github.com/gocd-demo/node-bulletin-board.git
         shallow_clone: false
         auto_update: true
         branch: master
@@ -34,7 +34,7 @@ pipelines:
                   EnvironmentVariablePrefix: ''
                   SkipImagePulling: 'true'
                 artifact_id: bulletin-board
-                pipeline: build_and_publish_image_demoapp/test_application_demoapp
+                pipeline: build_and_publish_image/test_application
                 stage: build_and_publish_image
                 job: build_image
                 artifact_origin: external
