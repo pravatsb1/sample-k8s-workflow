@@ -1,14 +1,14 @@
 format_version: 3
 pipelines:
-  test_application_demoapp:
-    group: demo
+  test_application:
+    group: sample
     label_template: ${COUNT}
     lock_behavior: unlockWhenFinished
     display_order: 2
     environment_variables:
     materials:
       upstream:
-        pipeline: build_and_publish_image_demoapp
+        pipeline: build_and_publish_image
         stage: build_and_publish_image
         name: upstream
     stages:
@@ -25,7 +25,7 @@ pipelines:
             tasks:
             - fetch:
                 artifact_id: bulletin-board
-                pipeline: build_and_publish_image_demoapp
+                pipeline: build_and_publish_image
                 stage: build_and_publish_image
                 job: build_image
                 artifact_origin: external
